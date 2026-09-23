@@ -75,6 +75,7 @@ struct Settings {
   int transitionEffect = 19;
   int transitionDirection = kTransitionNormal;
   int transitionDurationMs = 1000;
+  int indicatorStyle = 0;
   long appDurationMs = 7000;
   int timeMode = 1;
   uint32_t calendarHeaderColor = 0xFF0000u;
