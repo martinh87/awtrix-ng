@@ -1286,6 +1286,8 @@ const FIELDS={
  brightness:F('bright','slider','Brightness|Helligkeit','Ignored while auto brightness is on.|Ohne Wirkung bei automatischer Helligkeit.',{min:0,max:255}),
  autoBrightness:F('bright','toggle','Auto brightness|Automatische Helligkeit','Follows the ambient light sensor.|Folgt dem Umgebungslichtsensor.'),
  power:F('bright','toggle','Display on|Anzeige an','Turns the matrix off without cutting power.|Schaltet die Matrix aus, ohne den Strom zu trennen.'),
+ indicatorStyle:F('apps','select','Indicator style|Indikator-Stil','Appearance of the right-side indicators.|Aussehen der Indikatoren auf der rechten Seite.',{opt:[
+  [0,'Default|Standard'],[1,'Reduced|Reduziert'],[2,'Minimal|Minimal']]}),
  appDurationMs:F('apps','number','Time per app|Zeit pro App','How long each app stays.|Wie lange jede App bleibt.',{min:1000,max:3600000,step:500,unit:'ms'}),
  autoTransition:F('apps','toggle','Auto rotation|Automatischer Wechsel','Moves to the next app on its own.|Wechselt von selbst zur nächsten App.'),
  transitionDurationMs:F('apps','number','Transition duration|Übergangsdauer','Length of the switch. 0 = instant.|Dauer des Wechsels. 0 = sofort.',{min:0,max:5000,unit:'ms'}),
