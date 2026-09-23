@@ -282,6 +282,8 @@ void RenderPipeline::playPageSound(const AppSpec& spec) {
 // and bottom corner.
 void RenderPipeline::drawIndicators(Canvas& out, int64_t nowMs) const {
   const RuntimeState& rt = d_.engine->state().runtime();
+  const Settings& s = d_.engine->state().settings();
+  
   const int right = out.width() - 1;
   const int bottom = out.height() - 1;
   const int mid = out.height() / 2;
@@ -289,11 +291,25 @@ void RenderPipeline::drawIndicators(Canvas& out, int64_t nowMs) const {
     int count;
     int px[3][2];
   };
-  const Shape shapes[3] = {
+
+  // Initiate indicator shape with default style
+  Shape shapes[3] = {
       {3, {{right, 0}, {right - 1, 0}, {right, 1}}},
       {2, {{right, mid - 1}, {right, mid}, {0, 0}}},
       {3, {{right, bottom}, {right, bottom - 1}, {right - 1, bottom}}},
   };
+
+  // Redefine indicator shapes according to selected style
+  if (s.indicatorStyle == 1) {
+    shapes[0] = {2, {{right, 0}, {right, 1}, {0, 0}}};
+    shapes[1] = {2, {{right, mid - 1}, {right, mid}, {0, 0}}};
+    shapes[2] = {2, {{right, bottom - 1}, {right, bottom}, {0, 0}}};
+  } else if (s.indicatorStyle == 2) {
+    shapes[0] = {1, {{right, 1}, {0, 0}, {0, 0}}};
+    shapes[1] = {1, {{right, mid}, {0, 0}, {0, 0}}};
+    shapes[2] = {1, {{right, bottom - 1}, {0, 0}, {0, 0}}};
+  }
+  
   for (int i = 0; i < 3; ++i) {
     const Indicator& ind = rt.indicators[i];
     if (!ind.on) continue;
