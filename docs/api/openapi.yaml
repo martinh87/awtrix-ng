@@ -2133,6 +2133,11 @@ components:
             changing app order. Symmetric transitions are unaffected.
         transitionDurationMs: { type: integer, minimum: 0 }
         appDurationMs: { type: integer, minimum: 0 }
+        indicatorStyle:
+          type: integer
+          minimum: 0
+          maximum: 2
+          description: Style of the app indicators (0 = Default, 1 = Reduced, 2 = Minimal)
         timeMode:
           type: integer
           minimum: 0
