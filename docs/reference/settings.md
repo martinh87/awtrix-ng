@@ -115,6 +115,7 @@ do not change the framebuffer [`GET /api/v1/display/screen`](http.md) returns.
 | `gamma` | number | > 0 | `1.9` | - | Gamma correction for the panel. Must be **strictly** positive - `0` is rejected. No upper bound. |
 | `colorCorrection` | color or `null` | - | `null` | - | Per-channel multiplier applied to the whole panel. `null` = off. |
 | `colorTint` | color or `null` | - | `null` | - | A second per-channel multiplier (an RGB tint), applied on top of `colorCorrection`. `null` = off. |
+| `indicatorStyle` | int | 0–2 | `0` | Appearance of the right-side app indicators (0 = Default, 1 = Reduced, 2 = Minimal). |
 
 `colorTint` is an **RGB color, not a Kelvin value**. Pass it the tint you want multiplied
 into every pixel (for example `"#FFD6AA"` to warm the panel), not `2700`. `null` turns the
