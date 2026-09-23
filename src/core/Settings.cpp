@@ -82,6 +82,7 @@ constexpr Field kFields[] = {
     mkTransition("transitionEffect", &Settings::transitionEffect),
     mkEnum("transitionDirection", &Settings::transitionDirection, kTransitionDirectionNames, 2),
     mkInt("transitionDurationMs", &Settings::transitionDurationMs, 0, INT_MAX),
+    mkInt("indicatorStyle", &Settings::indicatorStyle, 0, 2),
     mkLong("appDurationMs", &Settings::appDurationMs),
     mkInt("timeMode", &Settings::timeMode, 0, 6),
     mkColor("calendarHeaderColor", &Settings::calendarHeaderColor),
