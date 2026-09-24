@@ -2133,16 +2133,16 @@ components:
             changing app order. Symmetric transitions are unaffected.
         transitionDurationMs: { type: integer, minimum: 0 }
         appDurationMs: { type: integer, minimum: 0 }
-        indicatorStyle:
-          type: integer
-          minimum: 0
-          maximum: 2
-          description: Style of the app indicators (0 = Default, 1 = Reduced, 2 = Minimal)
         timeMode:
           type: integer
           minimum: 0
           maximum: 6
           description: Clock layout 0-6; a higher value is rejected with 422.
+        indicatorStyle:
+          type: integer
+          minimum: 0
+          maximum: 3
+          description: Style of the indicators (0 = Default, 1 = Reduced, 2 = Minimal, 3 = X-Large)
         calendarHeaderColor: { $ref: "#/components/schemas/Color" }
         calendarTextColor: { $ref: "#/components/schemas/Color" }
         calendarBodyColor: { $ref: "#/components/schemas/Color" }
