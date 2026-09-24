@@ -278,8 +278,7 @@ void RenderPipeline::playPageSound(const AppSpec& spec) {
   d_.audio->play(req.source, req.value, detail);
 }
 
-// The three status indicators are fixed pixel clusters on the right-hand edge: top corner, middle
-// and bottom corner.
+// The three status indicators are fixed pixel clusters on the right-hand edge
 void RenderPipeline::drawIndicators(Canvas& out, int64_t nowMs) const {
   const RuntimeState& rt = d_.engine->state().runtime();
   const Settings& s = d_.engine->state().settings();
@@ -289,10 +288,10 @@ void RenderPipeline::drawIndicators(Canvas& out, int64_t nowMs) const {
   const int mid = out.height() / 2;
   struct Shape {
     int count;
-    int px[3][2];
+    int px[4][2];
   };
 
-  // Initiate indicator shape with default style
+  // Initiate indicator shape with default style (indicatorStyle = 0)
   Shape shapes[3] = {
       {3, {{right, 0}, {right - 1, 0}, {right, 1}}},
       {2, {{right, mid - 1}, {right, mid}, {0, 0}}},
@@ -301,13 +300,20 @@ void RenderPipeline::drawIndicators(Canvas& out, int64_t nowMs) const {
 
   // Redefine indicator shapes according to selected style
   if (s.indicatorStyle == 1) {
-    shapes[0] = {2, {{right, 0}, {right, 1}, {0, 0}}};
-    shapes[1] = {2, {{right, mid - 1}, {right, mid}, {0, 0}}};
-    shapes[2] = {2, {{right, bottom - 1}, {right, bottom}, {0, 0}}};
+    // Reduced
+    shapes[0] = {2, {{right, 0}, {right, 1}}};
+    shapes[1] = {2, {{right, mid - 1}, {right, mid}}};
+    shapes[2] = {2, {{right, bottom - 1}, {right, bottom}}};
   } else if (s.indicatorStyle == 2) {
-    shapes[0] = {1, {{right, 1}, {0, 0}, {0, 0}}};
-    shapes[1] = {1, {{right, mid}, {0, 0}, {0, 0}}};
-    shapes[2] = {1, {{right, bottom - 1}, {0, 0}, {0, 0}}};
+    // Minimal
+    shapes[0] = {1, {{right, 1}}};
+    shapes[1] = {1, {{right, mid}}};
+    shapes[2] = {1, {{right, bottom - 1}}};
+  } else if (s.indicatorStyle == 3) {
+    // X-Large
+    shapes[0] = {4, {{right, 0}, {right - 1, 0}, {right, 1}, {right - 1, 1}}};
+    shapes[1] = {4, {{right, mid - 1}, {right - 1, mid - 1}, {right, mid}, {right - 1, mid}}};
+    shapes[2] = {4, {{right, bottom - 1}, {right - 1, bottom - 1}, {right, bottom}, {right - 1, bottom}}};
   }
   
   for (int i = 0; i < 3; ++i) {
