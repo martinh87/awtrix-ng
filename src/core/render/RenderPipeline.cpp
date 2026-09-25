@@ -307,8 +307,8 @@ void RenderPipeline::drawIndicators(Canvas& out, int64_t nowMs) const {
   } else if (s.indicatorStyle == 2) {
     // Minimal
     shapes[0] = {1, {{right, 1}}};
-    shapes[1] = {1, {{right, mid}}};
-    shapes[2] = {1, {{right, bottom - 1}}};
+    shapes[1] = {1, {{right, 3}}};
+    shapes[2] = {1, {{right, 5}}};
   } else if (s.indicatorStyle == 3) {
     // X-Large
     shapes[0] = {4, {{right, 0}, {right - 1, 0}, {right, 1}, {right - 1, 1}}};
