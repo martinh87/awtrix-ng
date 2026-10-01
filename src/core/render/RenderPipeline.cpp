@@ -305,12 +305,13 @@ void RenderPipeline::drawIndicators(Canvas& out, int64_t nowMs) const {
     shapes[1] = {2, {{right, mid - 1}, {right, mid}}};
     shapes[2] = {2, {{right, bottom - 1}, {right, bottom}}};
   } else if (s.indicatorStyle == 2) {
-    // Minimal
-    shapes[0] = {1, {{right, 1}}};
-    shapes[1] = {1, {{right, 3}}};
-    shapes[2] = {1, {{right, 5}}};
+    // Minimal (offset depending on weekdayBar)
+    int yOff = s.weekdayBar.show ? 0 : 1;
+    shapes[0] = {1, {{right, 1 + yOff}}};
+    shapes[1] = {1, {{right, 3 + yOff}}};
+    shapes[2] = {1, {{right, 5 + yOff}}};
   } else if (s.indicatorStyle == 3) {
-    // X-Large
+    // Bold
     shapes[0] = {4, {{right, 0}, {right - 1, 0}, {right, 1}, {right - 1, 1}}};
     shapes[1] = {4, {{right, mid - 1}, {right - 1, mid - 1}, {right, mid}, {right - 1, mid}}};
     shapes[2] = {4, {{right, bottom - 1}, {right - 1, bottom - 1}, {right, bottom}, {right - 1, bottom}}};
