@@ -2142,7 +2142,7 @@ components:
           type: integer
           minimum: 0
           maximum: 3
-          description: Style of the indicators (0 = Default, 1 = Reduced, 2 = Minimal, 3 = X-Large)
+          description: Style of the indicators (0 = Default, 1 = Reduced, 2 = Minimal, 3 = Bold)
         calendarHeaderColor: { $ref: "#/components/schemas/Color" }
         calendarTextColor: { $ref: "#/components/schemas/Color" }
         calendarBodyColor: { $ref: "#/components/schemas/Color" }
